@@ -1,0 +1,111 @@
+INSTALACION DEL SERVIDOR APACHE
+
+ instalamos el apache
+ - sudo apt install apache2
+
+ luego vemos las reglas de firewall
+ - sudo ufw app list
+
+ y vamos a permitir la comunicacion en apache full
+ - sudo ufw allow in "Apache Full"
+
+ habilitamos el firewall
+ - sudo ufw enable
+
+ Consultamos el status del firewall
+ - sudo ufw status
+
+ probamos en nuestro navegador, con la ip de nuestra maquina
+ - 10.0.0.26 o localhost _debido a que es servidor, es mejor comprobarlo con otro equipo_
+
+
+INSTALACION DEL SERVIDOR DE BASE DE DATOS MYSQL
+
+ Instalamos el MYSQL
+ - sudo apt install mysql-server
+
+ luego configuramos el mysql
+ - sudo mysql_secure_installation
+
+ nos preguntara si queremos habilitar el Validate password Plugin, damos en NO
+
+ comprobamos que la instalacion ya funciona con las credenciales configuradas en el proceso
+- sudo mysql
+
+INSTALACION DE PHP
+
+ Instalamos los complementos necesarios para el php
+ - sudo apt install php libapache2-mod-php php-mysql
+
+ Comprobamos la version de PHP
+ - php -v
+
+
+
+PASOS PARA CONFIGURAR UN HOST VIRTUAL PARA EL SITIO
+
+ Primero, creamos la capeta contenedora, en este caso Perfiles
+ - sudo mkdir /var/www/nombre_dominio o capeta = sudo mkdir /var/www/perfiles
+
+ Luego le damos los permisos necesarios para utilizar la capeta
+ - sudo chown -R $USER:$USER /var/www/perfiles
+
+ Haremos un nuevo archivo de configuración en el directorio sites-available de Apache
+ - sudo nano /etc/apache2/sites-available/perfiles.conf
+
+ Luego dentro del editor, escribiremos lo siguiente
+
+ <VirtualHost *:80>
+    #ServerName perfiles
+    #ServerAlias www.perfiles
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/perfiles
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+
+ Habilitamos el Host Virtual
+ - sudo a2ensite perfiles
+
+ Deshabilitamos la pagina de inicio de apache
+ - sudo a2dissite 000-default
+
+ Comprobamos que en nuestra configuración no tenemos problemas de sintaxis
+ - sudo apache2ctl configtest
+
+ reiniciamos el apache para aplicar los cambios
+ - sudo systemctl reload apache2
+
+ para verificar que funciona el SERVIDOR
+ - sudo nano /var/www/perfiles/index.html
+
+ y escribimos codigo html para verlo en la pagina y lo comprobamos con la ip de la maquina en otra pc a traves de navegador
+
+ FUNCIONAMIENTO DE PHP
+
+ para verificar el funcionamiento de PHP haremos algo similar como lo anterior en HTML
+
+ - sudo nano /var/www/perfiles/info.php
+
+ <?php
+phpinfo();
+
+
+ Comprobamos que funciona
+ 10.0.0.26/info.php
+
+ y listo, tenemos configurado un servidor con el Stack LAMP
+
+
+
+
+
+
+
+
+
+
+
+
+
