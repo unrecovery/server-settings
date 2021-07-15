@@ -1,0 +1,41 @@
+PASOS PARA LA INSTALACION DE OWNCLOUD 
+
+Verificamos que el sistema este actualizado 
+- sudo apt update && sudo apt upgrade -y
+
+Despues de la actualizacion, hacemos u
+
+
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install -y php-imagick php-common php-curl php-gd php-imap php-intl php-json php-mbstring php-mysql php-ssh2 php-xml php-zip php-apcu php-redis redis-server
+
+CREATE DATABASE ownclouddb;
+
+CREATE USER ownclouduser@localhost IDENTIFIED BY 'OwnCloundPwd';
+
+GRANT ALL ON ownclouddb.* TO ownclouduser@localhost;
+
+FLUSH PRIVILEGES;
+
+https://owncloud.com/download-server/
+
+sudo vim /etc/apache2/conf-available/owncloud.conf
+
+Alias /owncloud "/var/www/owncloud/"
+
+<Directory /var/www/owncloud/>
+	Options +FollowSymlinks
+	AllowOverride All
+	<IfModule mod_dav.c>
+		Dav off
+	</IfModule>
+
+	SetEnv HOME /var/www/owncloud
+	SetEnv HTTP_HOME /var/www/owncloud
+</Directory>
+
+
+sudo a2enconf owncloud.conf
+
+sudo a2enmod rewrite headers env dir mime
