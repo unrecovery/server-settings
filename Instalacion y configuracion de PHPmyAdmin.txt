@@ -23,8 +23,8 @@ Antes que nada. verificamos que PHP y Mysql esten instalados en el sistema, en c
   - la contraseña es: Perfiles111
 
  Ya estando dentro de MySQL, hacemos la siguiente consulta 
- -> SELECT user, authetication_string,plugin,host FROM mysql.user;
- 
+ -> SELECT user,authentication_string,plugin,host FROM mysql.user;
+
  Seleccionamos el usuario root para hacer la autenticacion por contraseña, por lo que hacemos la siguiente consulta a MySQL
  -> ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'Perfiles111';
 
