@@ -29,10 +29,13 @@ Antes que nada. verificamos que PHP y Mysql esten instalados en el sistema, en c
  -> ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'Perfiles111';
 
  Verificamos que se haya realizado los cambios correspondientes haciendo la consulta anterior
- -SELECT user, authetication_string,plugin,host FROM mysql.user;
+ - SELECT user,authentication_string,plugin,host FROM mysql.user;
 
  Salimos de MySQL 
  - exit 
+ 
+ 
+ LA IP DE LA UBUNTU SERVER 20.04 ES LA 10.0.0.26
 
  Comprobamos entrando a 10.0.0.26/phpmyadmin con las siguientes credencianles
  - user -> root
