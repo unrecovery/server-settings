@@ -21,6 +21,9 @@ el cual pueden obtener en el sitio de https://owncloud.com/download-server/
 
 sudo unzip _nombrearchivo_ /var/www/
 
+sudo chown -R www-data:www-data /var/www/owncloud
+sudo chmod -R 755 /var/www/owncloud
+
 sudo nano /etc/apache2/conf-available/owncloud.conf
 
 Alias /owncloud "/var/www/owncloud/"
