@@ -39,3 +39,5 @@ Alias /owncloud "/var/www/owncloud/"
 sudo a2enconf owncloud.conf
 
 sudo a2enmod rewrite headers env dir mime
+
+sudo systemctl restart apache2
