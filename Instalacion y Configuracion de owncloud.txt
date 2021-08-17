@@ -20,7 +20,7 @@ FLUSH PRIVILEGES;
 
 https://owncloud.com/download-server/
 
-sudo vim /etc/apache2/conf-available/owncloud.conf
+sudo nano /etc/apache2/conf-available/owncloud.conf
 
 Alias /owncloud "/var/www/owncloud/"
 
