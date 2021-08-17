@@ -41,3 +41,8 @@ sudo a2enconf owncloud.conf
 sudo a2enmod rewrite headers env dir mime
 
 sudo systemctl restart apache2
+
+despues de configurarse 
+sudo systemctl restart apache2
+sudo systemctl restart mysql
+
